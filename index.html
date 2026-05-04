@@ -140,15 +140,25 @@ body{background:var(--cream);color:var(--text);font-family:'DM Sans',sans-serif;
   border-top:1px dashed var(--border);margin-top:4px;
 }
 .t-card.open .t-details{display:block}
-.t-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;margin-top:8px}
-.t-detail{background:var(--cream);border-radius:8px;padding:7px 10px}
-.t-detail-label{font-size:.65rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
-.t-detail-val{font-size:.8rem;color:var(--text);font-weight:500;line-height:1.3}
+.t-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px 10px;margin-top:10px}
+.t-detail{background:var(--cream);border-radius:10px;padding:8px 11px;border:1px solid rgba(232,160,23,.15)}
+.t-detail-label{font-size:.62rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px;display:flex;align-items:center;gap:4px}
+.t-detail-val{font-size:.8rem;color:var(--text);font-weight:500;line-height:1.4}
 .t-detail.full{grid-column:1/-1}
+.t-detail.reach{grid-column:1/-1;background:linear-gradient(135deg,#fff8e7,#fff3cd);border:1px solid var(--gold)}
+.t-detail.info-box{grid-column:1/-1;background:linear-gradient(135deg,#e8f4fd,#dbeeff);border:1px solid #b3d4f5}
+.t-detail.timing-box{background:linear-gradient(135deg,#f0fff0,#e0f7e0);border:1px solid #a8dba8}
 .t-tag{
   display:inline-block;background:var(--gold3);color:var(--maroon);
   border-radius:20px;padding:2px 8px;font-size:.68rem;font-weight:700;margin:2px 2px 0 0;border:1px solid var(--gold);
 }
+.reach-row{display:flex;gap:5px;align-items:flex-start;margin-bottom:5px;font-size:.78rem;line-height:1.4}
+.reach-icon{font-size:.85rem;flex-shrink:0;margin-top:1px}
+.reach-label{font-weight:700;color:var(--saffron);min-width:55px}
+.reach-text{color:var(--text);flex:1}
+.action-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px;padding-top:10px;border-top:1px dashed var(--border)}
+.share-btn{display:flex;align-items:center;gap:5px;background:#25D366;color:white;border:none;border-radius:8px;padding:7px 12px;font-size:.76rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+.maps-btn{display:flex;align-items:center;gap:5px;background:#4285F4;color:white;border:none;border-radius:8px;padding:7px 12px;font-size:.76rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
 .edit-btn{
   display:flex;align-items:center;gap:5px;margin-top:10px;
   background:var(--saffron);color:white;border:none;border-radius:8px;
@@ -178,6 +188,7 @@ body{background:var(--cream);color:var(--text);font-family:'DM Sans',sans-serif;
   background:var(--cream);outline:none;
 }
 .form-input:focus{border-color:var(--saffron);background:white}
+textarea.form-input{resize:vertical;min-height:60px}
 .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .modal-actions{display:flex;gap:10px;padding:10px 18px 0}
 .btn-save{
@@ -245,8 +256,8 @@ body{background:var(--cream);color:var(--text);font-family:'DM Sans',sans-serif;
       <div class="hero-title">India Temple<br/>Pilgrim Guide</div>
       <div class="hero-sub">Complete Sacred Temples Database</div>
       <div class="hero-stats">
-        <span class="stat-pill">🛕 1100+ Temples</span>
-        <span class="stat-pill">📍 26 Categories</span>
+        <span class="stat-pill">🛕 1200+ Temples</span>
+        <span class="stat-pill">📍 28 Categories</span>
         <span class="stat-pill">🌍 India &amp; Overseas</span>
       </div>
     </div>
@@ -295,44 +306,48 @@ body{background:var(--cream);color:var(--text);font-family:'DM Sans',sans-serif;
     <div class="modal-title">✏️ Edit Temple Details</div>
     <div class="modal-body">
       <div class="form-row">
-        <label class="form-label">Temple Name</label>
-        <input class="form-input" id="e_name" placeholder="Temple name"/>
+        <label class="form-label">🛕 Temple Name</label>
+        <input class="form-input" id="e_name" placeholder="Full temple name"/>
       </div>
       <div class="form-row">
-        <label class="form-label">God / Deity</label>
+        <label class="form-label">🙏 God / Deity</label>
         <input class="form-input" id="e_deity" placeholder="Presiding deity"/>
       </div>
-      <div class="form-row-2">
-        <div class="form-row">
-          <label class="form-label">Location / Town</label>
-          <input class="form-input" id="e_location" placeholder="Town/Village"/>
-        </div>
-        <div class="form-row">
-          <label class="form-label">Close To</label>
-          <input class="form-input" id="e_closeto" placeholder="Nearest city"/>
-        </div>
-      </div>
-      <div class="form-row-2">
-        <div class="form-row">
-          <label class="form-label">State</label>
-          <input class="form-input" id="e_state" placeholder="State"/>
-        </div>
-        <div class="form-row">
-          <label class="form-label">Country</label>
-          <input class="form-input" id="e_country" placeholder="Country"/>
-        </div>
+      <div class="form-row">
+        <label class="form-label">📍 Full Address (include State &amp; Country)</label>
+        <textarea class="form-input" id="e_address" rows="2" placeholder="Village/Town, District, State, Country"></textarea>
       </div>
       <div class="form-row">
-        <label class="form-label">Temple Contact</label>
+        <label class="form-label">🗺 How to Reach</label>
+        <textarea class="form-input" id="e_reach" rows="3" placeholder="By Road: ...&#10;By Train: ...&#10;By Air: ..."></textarea>
+      </div>
+      <div class="form-row">
+        <label class="form-label">🕐 Temple Timings</label>
+        <input class="form-input" id="e_timings" placeholder="e.g. 6:00 AM – 12:00 PM, 4:00 PM – 8:00 PM"/>
+      </div>
+      <div class="form-row">
+        <label class="form-label">📞 Temple Contact</label>
         <input class="form-input" id="e_contact" placeholder="Phone number"/>
       </div>
       <div class="form-row">
-        <label class="form-label">Best Visit Months</label>
-        <input class="form-input" id="e_months" placeholder="e.g. Oct–Feb, Navratri"/>
+        <label class="form-label">📅 Best Visit Months / Festivals</label>
+        <input class="form-input" id="e_months" placeholder="e.g. Oct–Feb, Navratri, Shivratri"/>
       </div>
       <div class="form-row">
-        <label class="form-label">Special Notes</label>
-        <input class="form-input" id="e_notes" placeholder="Dress code, Darshan timings, etc."/>
+        <label class="form-label">ℹ️ About Temple</label>
+        <textarea class="form-input" id="e_about" rows="3" placeholder="History, significance, special features…"></textarea>
+      </div>
+      <div class="form-row">
+        <label class="form-label">👗 Dress Code / Rules</label>
+        <input class="form-input" id="e_dresscode" placeholder="e.g. Traditional attire, no leather items"/>
+      </div>
+      <div class="form-row">
+        <label class="form-label">🏨 Accommodation</label>
+        <input class="form-input" id="e_stay" placeholder="e.g. Dharamshala, TTD Guest House, nearby hotels"/>
+      </div>
+      <div class="form-row">
+        <label class="form-label">📝 Additional Notes</label>
+        <input class="form-input" id="e_notes" placeholder="Any other useful tip for pilgrims"/>
       </div>
     </div>
     <div class="modal-actions">
@@ -353,17 +368,17 @@ const DB = {
 jyotirlinga:{
   name:"Jyotirlingas", icon:"⚡", count:12, color:"#B71C1C",
   tabs:[{label:"All 12",temples:[
-    {sl:1,name:"Somnath Temple",deity:"Lord Shiva (Somnath)",loc:"Prabhas Patan, Veraval",near:"Veraval",state:"Gujarat",country:"India",contact:"02876-231212",months:"Oct–Feb, Shivratri",notes:"One of 12 sacred Jyotirlingas. Coastal temple."},
-    {sl:2,name:"Mallikarjuna Swamy Temple",deity:"Shiva (Mallikarjuna) & Bhramaramba",loc:"Srisailam",near:"Nandyal",state:"Andhra Pradesh",country:"India",contact:"08524-288888",months:"Oct–Feb",notes:""},
-    {sl:3,name:"Mahakaleshwar Temple",deity:"Lord Shiva (Mahakal)",loc:"Ujjain",near:"Indore",state:"Madhya Pradesh",country:"India",contact:"0734-2550563",months:"Oct–Mar, Shivratri",notes:"Only south-facing Jyotirlinga. Bhasma Aarti at dawn."},
+    {sl:1,name:"Somnath Temple",deity:"Lord Shiva (Somnath)",loc:"Prabhas Patan, Veraval",near:"Veraval",state:"Gujarat",country:"India",contact:"02876-231212",months:"Oct–Feb, Shivratri",address:"Prabhas Patan, Veraval, Gir Somnath District, Gujarat, India",timings:"Darshan: 6:00 AM – 9:00 PM | Aarti: 7 AM, 12 PM, 7 PM | Light & Sound show: 8 PM",about:"One of the 12 sacred Jyotirlingas, Somnath is believed to be the first among them. The present temple was reconstructed in 1951 after repeated invasions. Set on the Arabian Sea coast at the Triveni Sangam of Hiran, Kapila & Saraswati rivers. The evening Aarti and Light & Sound show are unmissable.",reach:"By Road: Regular buses from Ahmedabad (415 km), Rajkot (190 km), Junagadh (85 km)\nBy Train: Veraval Railway Station (6 km) – trains from Ahmedabad & Mumbai\nBy Air: Diu Airport (70 km), Rajkot Airport (195 km)",dresscode:"Traditional attire preferred. No shorts or sleeveless inside sanctum.",stay:"TTD Guest Houses, Somnath Trust dharamshala, multiple hotels in Veraval",notes:"One of 12 sacred Jyotirlingas. Coastal temple."},
+    {sl:2,name:"Mallikarjuna Swamy Temple",deity:"Shiva (Mallikarjuna) & Bhramaramba Devi",loc:"Srisailam, Andhra Pradesh",near:"Nandyal / Hyderabad",state:"Andhra Pradesh",country:"India",contact:"08524-288888",months:"Oct–Feb, Shivratri",address:"Srisailam – 518101, Nandyal District, Andhra Pradesh, India",timings:"5:00 AM – 10:00 PM | Aarti: 5 AM, 9 AM, 12 PM, 4 PM, 7 PM, 9 PM",about:"One of the 12 Jyotirlingas and one of the 18 Shakti Peethas (Bhramaramba). Located atop Nallamala Hills on the banks of the Krishna River. The presiding deities are Mallikarjuna (Shiva) and Bhramaramba (Shakti). The surrounding area is a Project Tiger Reserve.",reach:"By Road: Buses from Hyderabad (212 km), Kurnool (100 km), Vijayawada (240 km)\nBy Train: Markapur Road (85 km), Nandyal (90 km), Kurnool (100 km)\nBy Air: Rajiv Gandhi International Airport, Hyderabad (212 km)",dresscode:"Traditional attire. Men may need to remove shirt in inner sanctum. No jeans for ladies.",stay:"TTD Guest Houses (book online), AP Tourism Haritha Hotel, private hotels in Srisailam",notes:""},
+    {sl:3,name:"Mahakaleshwar Temple",deity:"Lord Shiva (Mahakal)",loc:"Ujjain, Madhya Pradesh",near:"Indore",state:"Madhya Pradesh",country:"India",contact:"0734-2550563",months:"Oct–Mar, Shivratri",address:"Jaisindhpura, Ujjain – 456001, Madhya Pradesh, India",timings:"Bhasma Aarti: 4:00 AM (booking required) | Temple: 4:00 AM – 11:00 PM | Aarti timings: 4 AM, 7 AM, 10 AM, 5 PM, 8 PM, 11 PM",about:"One of the 12 Jyotirlingas, Mahakaleshwar is the only south-facing (Dakshinamukhi) Jyotirlinga. The famous Bhasma Aarti performed with sacred ash at dawn is a rare and spiritually powerful ritual. The temple complex also contains Swayambhu shrines of Omkareshwar and Nagachandreshwar.",reach:"By Road: Buses from Indore (55 km), Bhopal (183 km), Gwalior (445 km)\nBy Train: Ujjain Railway Station (2 km) – well connected to major cities\nBy Air: Devi Ahilya Bai Holkar Airport, Indore (55 km)",dresscode:"Dhoti/saree preferred for Bhasma Aarti. No shorts, no sleeveless.",stay:"MP Tourism hotels, dharmashalas, private hotels near temple",notes:"Only south-facing Jyotirlinga. Bhasma Aarti at dawn."},
     {sl:4,name:"Omkareshwar Temple",deity:"Lord Shiva (Omkareshwar)",loc:"Mandhata Island, Narmada River",near:"Khandwa",state:"Madhya Pradesh",country:"India",contact:"07280-271443",months:"Oct–Mar",notes:""},
-    {sl:5,name:"Kedarnath Temple",deity:"Lord Shiva (Kedarnath)",loc:"Kedarnath, Rudraprayag",near:"Rishikesh",state:"Uttarakhand",country:"India",contact:"01364-263011",months:"May–Oct",notes:"Trekking required. Closed Nov–Apr."},
+    {sl:5,name:"Kedarnath Temple",deity:"Lord Shiva (Kedarnath)",loc:"Kedarnath, Rudraprayag, Uttarakhand",near:"Gaurikund / Rishikesh",state:"Uttarakhand",country:"India",contact:"01364-263011",months:"May–Jun, Sep–Oct (Open Akshaya Tritiya to Diwali)",address:"Kedarnath, Rudraprayag District, Uttarakhand – 246445, India",timings:"Summer: 4:00 AM – 9:00 PM | Aarti: Dawn & Dusk | Closed: Kartik Purnima (Nov) to Akshaya Tritiya (Apr–May)",about:"One of the 12 Jyotirlingas and part of the Char Dham Yatra. Situated at 3,583 m altitude in the Himalayas near Mandakini River. The temple is believed to be 8th century, built by Adi Shankaracharya. A helicopter service is available from Phata/Sersi to the temple.",reach:"By Road: Drive to Gaurikund (30 km from Sonprayag). Gaurikund to Kedarnath is a 16-18 km trek or pony/doli\nBy Train: Rishikesh (216 km) or Haridwar (247 km) – then road\nBy Air: Jolly Grant Airport, Dehradun (235 km) | Helicopter from Phata/Sersi/Sitapur",dresscode:"Traditional Indian attire. Carry warm clothing (temperature near 0°C at night).",stay:"GMVN Tourist Rest House, private lodges at Kedarnath & Gaurikund",notes:"Trekking required. Closed Nov–Apr."},
     {sl:6,name:"Bhimashankar Temple",deity:"Lord Shiva (Bhimashankar)",loc:"Bhorgiri, near Pune",near:"Pune",state:"Maharashtra",country:"India",contact:"02114-263011",months:"Oct–Feb",notes:""},
-    {sl:7,name:"Kashi Vishwanath Temple",deity:"Lord Shiva (Vishwanath)",loc:"Varanasi",near:"Varanasi",state:"Uttar Pradesh",country:"India",contact:"0542-2392879",months:"All year, Shivratri",notes:""},
+    {sl:7,name:"Kashi Vishwanath Temple",deity:"Lord Shiva (Vishwanath)",loc:"Varanasi, Uttar Pradesh",near:"Varanasi",state:"Uttar Pradesh",country:"India",contact:"0542-2392879",months:"All year, Shivratri, Kartik month",address:"Vishwanath Gali, Varanasi – 221001, Uttar Pradesh, India",timings:"3:00 AM – 11:00 PM | Mangla Aarti: 3 AM | Bhog Aarti: 11:30 AM | Saptarishi Aarti: 7 PM | Shringar: 9 PM | Shayan Aarti: 10:30 PM",about:"The holiest of all Shiva temples, Kashi Vishwanath is one of the 12 Jyotirlingas situated on the western bank of the Ganges in Varanasi (Banaras). The current temple was built by Ahilya Bai Holkar of Indore in 1780 AD. The Kashi Vishwanath Corridor inaugurated in 2022 has transformed the temple complex.",reach:"By Road: Varanasi is well connected to Delhi (780 km), Lucknow (290 km), Prayagraj (120 km)\nBy Train: Varanasi Junction (7 km), Manduadih Station (3 km)\nBy Air: Lal Bahadur Shastri Airport, Varanasi (25 km)",dresscode:"Traditional attire (dhoti/saree). Mobile phones prohibited inside sanctum. No shorts/skirts.",stay:"Multiple dharmashalas, UP Tourism hotels, ashrams on Ganges ghats",notes:""},
     {sl:8,name:"Trimbakeshwar Temple",deity:"Lord Shiva (Trimbakeshwar)",loc:"Trimbak, Nashik",near:"Nashik",state:"Maharashtra",country:"India",contact:"02594-233063",months:"Oct–Mar",notes:""},
     {sl:9,name:"Vaidyanath Dham (Baidyanath)",deity:"Lord Shiva (Vaidyanath)",loc:"Deoghar",near:"Jasidih",state:"Jharkhand",country:"India",contact:"06432-222372",months:"Jul–Aug, Oct–Mar",notes:""},
     {sl:10,name:"Nageshwar Temple",deity:"Lord Shiva (Nageshwar)",loc:"Near Dwarka",near:"Dwarka",state:"Gujarat",country:"India",contact:"02892-234031",months:"Oct–Feb",notes:""},
-    {sl:11,name:"Ramanathaswamy Temple",deity:"Lord Shiva (Ramanatha)",loc:"Rameswaram Island",near:"Madurai",state:"Tamil Nadu",country:"India",contact:"04573-221223",months:"Oct–Mar",notes:""},
+    {sl:11,name:"Ramanathaswamy Temple",deity:"Lord Shiva (Ramanatha)",loc:"Rameswaram Island, Tamil Nadu",near:"Madurai",state:"Tamil Nadu",country:"India",contact:"04573-221223",months:"Oct–Mar",address:"Rameswaram – 623526, Ramanathapuram District, Tamil Nadu, India",timings:"5:00 AM – 1:00 PM and 3:00 PM – 9:00 PM | Aarti: 5 AM, 8 AM, 1 PM, 4 PM, 9 PM",about:"One of the 12 Jyotirlingas and part of the Char Dham. It is believed Sri Rama installed the Shivalingam here to seek absolution after killing Ravana. The temple has the longest corridor (1.2 km) among all Indian temples. There are 22 sacred theertams (wells) inside the temple complex for ritual bathing.",reach:"By Road: Buses from Madurai (170 km), Chennai (590 km), Coimbatore (450 km)\nBy Train: Rameswaram Railway Station (1 km) – trains from Chennai, Madurai, Coimbatore\nBy Air: Madurai Airport (170 km)",dresscode:"Men must wear dhoti (no shirt) inside sanctum. Ladies in saree or salwar. No western attire.",stay:"TTD Guest Houses, private hotels in Rameswaram town, temple dharmahalas",notes:""},
     {sl:12,name:"Grishneshwar Temple",deity:"Lord Shiva (Grishneshwar)",loc:"Verul, near Aurangabad",near:"Ellora",state:"Maharashtra",country:"India",contact:"02437-274033",months:"Oct–Mar",notes:""},
   ]}]
 },
@@ -807,13 +822,13 @@ lns:{
       {sl:8,name:"LNS Temple – Malakonda, Ongole",deity:"Sri Lakshmi Narasimha Swamy",loc:"Malakonda",near:"Ongole",state:"Andhra Pradesh",country:"India",contact:"9491000732",months:"All year"},
       {sl:9,name:"LNS Temple – Penchalkona, Nellore",deity:"Sri Lakshmi Narasimha Swamy",loc:"Penchalkona",near:"Nellore",state:"Andhra Pradesh",country:"India",contact:"9491000737",months:"All year"},
       {sl:10,name:"LNS Temple – Tanikonda, Chittoor",deity:"Sri Lakshmi Narasimha Swamy",loc:"Tanikonda",near:"Chittoor",state:"Andhra Pradesh",country:"India",contact:"9951777701",months:"All year"},
-      {sl:11,name:"LNS Temple – Tirumala, Tirupati",deity:"Sri Lakshmi Narasimha Swamy",loc:"Tirumala",near:"Tirupati",state:"Andhra Pradesh",country:"India",contact:"180042545454",months:"All year"},
+      {sl:11,name:"LNS Temple – Tirumala, Tirupati",deity:"Sri Lakshmi Narasimha Swamy",loc:"Tirumala, Tirupati",near:"Tirupati",state:"Andhra Pradesh",country:"India",contact:"180042545454",months:"All year",address:"Tirumala – 517504, Tirupati, Andhra Pradesh, India",timings:"5:00 AM – 10:00 PM (All days) | Sarva Darshan queue system",about:"Sri Lakshmi Narasimha Swamy Vari Devasthanam at Tirumala is located within the Tirumala Tirupati complex. Narasimha Swamy blesses pilgrims as one of the pancha forms on Tirumala hills.",reach:"By Road: APSRTC buses to Tirupati from all major AP/TG/TN cities. Tirupati to Tirumala: 18 km hill road\nBy Train: Tirupati Railway Station (28 km from Tirumala)\nBy Air: Tirupati Airport (34 km)",dresscode:"Traditional Indian attire. Shorts/sleeveless not allowed on Tirumala.",stay:"TTD Cottages, guest houses – online booking at TTD website"},
       {sl:12,name:"LNS Temple – Madiletti, Kurnool",deity:"Sri Lakshmi Narasimha Swamy",loc:"Madiletti",near:"Kurnool",state:"Andhra Pradesh",country:"India",contact:"986667959",months:"All year"},
       {sl:13,name:"LNS Temple – Mattepally, Suryapet",deity:"Sri Lakshmi Narasimha Swamy",loc:"Mattepally",near:"Suryapet",state:"Telangana",country:"India",contact:"832848162",months:"All year"},
       {sl:14,name:"LNS Temple – Penukonda, Anantapur",deity:"Sri Lakshmi Narasimha Swamy",loc:"Penukonda",near:"Anantapur",state:"Andhra Pradesh",country:"India",contact:"8819246252",months:"All year"},
       {sl:15,name:"LNS Temple – Penna Ahobilam, Kurnool",deity:"Sri Lakshmi Narasimha Swamy",loc:"Penna Ahobilam",near:"Kurnool",state:"Andhra Pradesh",country:"India",contact:"8554244952",months:"All year"},
       {sl:16,name:"LNS Temple – Mallur, Telangana",deity:"Sri Lakshmi Narasimha Swamy",loc:"Mallur",near:"Khammam",state:"Telangana",country:"India",contact:"9010501459",months:"All year"},
-      {sl:17,name:"LNS Temple – Yadagirigutta, Telangana",deity:"Sri Lakshmi Narasimha Swamy",loc:"Yadagirigutta",near:"Hyderabad",state:"Telangana",country:"India",contact:"8333994020",months:"All year, Navratri"},
+      {sl:17,name:"LNS Temple – Yadagirigutta, Telangana",deity:"Sri Lakshmi Narasimha Swamy (5 forms)",loc:"Yadagirigutta, Yadadri Bhuvanagiri",near:"Hyderabad",state:"Telangana",country:"India",contact:"8333994020",months:"All year, Navratri",address:"Yadagirigutta – 508115, Yadadri Bhuvanagiri District, Telangana, India",timings:"4:00 AM – 11:00 PM | Darshan: Continuous | Aarti: 4 AM, 6 AM, 12 PM, 7 PM, 11 PM",about:"Sri Lakshmi Narasimha Swamy manifests in five forms here – Jwala Narasimha, Gandabhairunda Narasimha, Ugra Narasimha, Yoga Narasimha, and Lakshminarasimha. The recently renovated temple complex on Yadagiri Hill is one of the most visited temples in Telangana.",reach:"By Road: Buses and cabs from Hyderabad (60 km on NH-163)\nBy Train: Raigir Railway Station (15 km), Bhongir (25 km)\nBy Air: Rajiv Gandhi International Airport, Hyderabad (75 km)",dresscode:"Traditional attire. No shorts or sleeveless dress.",stay:"TS Tourism hotel, dharamshala at the temple, hotels in Bhongir"},
       {sl:18,name:"LNS – Eguva Ahobilam (Rayalaseema)",deity:"Sri Eguva Ahobilam Narasimha",loc:"Upper Ahobilam",near:"Nandyal",state:"Andhra Pradesh",country:"India",contact:"8519252024",months:"All year"},
       {sl:19,name:"LNS – Jwala Narasimha, Ahobilam",deity:"Sri Jwala Narasimha",loc:"Ahobilam",near:"Nandyal",state:"Andhra Pradesh",country:"India",contact:"8519252025",months:"All year"},
       {sl:20,name:"LNS – Digua Ahobilam (Lower)",deity:"Sri Digua Narasimha",loc:"Lower Ahobilam",near:"Nandyal",state:"Andhra Pradesh",country:"India",contact:"8519252024",months:"All year"},
@@ -824,7 +839,7 @@ lns:{
       {sl:25,name:"LNS – Bhargava Narasimha, Ahobilam",deity:"Sri Bhargava Narasimha",loc:"Ahobilam",near:"Nandyal",state:"Andhra Pradesh",country:"India",contact:"8519252025",months:"All year"},
       {sl:26,name:"LNS – Karanja Narasimha, Ahobilam",deity:"Sri Karanja Narasimha",loc:"Ahobilam",near:"Nandyal",state:"Andhra Pradesh",country:"India",contact:"8519252024",months:"All year"},
       {sl:27,name:"LNS – Ugra Narasimha, Ahobilam",deity:"Sri Ugra Narasimha",loc:"Ahobilam",near:"Nandyal",state:"Andhra Pradesh",country:"India",contact:"8519252025",months:"All year"},
-      {sl:28,name:"LNS Temple – Simhachalam, Vizag",deity:"Sri Varaha Lakshmi Narasimha",loc:"Simhachalam",near:"Visakhapatnam",state:"Andhra Pradesh",country:"India",contact:"6303800736",months:"All year, Akshaya Tritiya"},
+      {sl:28,name:"LNS Temple – Simhachalam, Vizag",deity:"Sri Varaha Lakshmi Narasimha",loc:"Simhachalam, Visakhapatnam",near:"Visakhapatnam",state:"Andhra Pradesh",country:"India",contact:"6303800736",months:"All year, Akshaya Tritiya",address:"Simhachalam – 530028, Visakhapatnam, Andhra Pradesh, India",timings:"6:30 AM – 1:00 PM and 2:30 PM – 9:00 PM | Akshaya Tritiya: Chandana Yatra (deity revealed without sandal paste)",about:"Sri Varaha Lakshmi Narasimha Swamy temple is an 11th-century gem atop Simhachalam Hill, 800 ft above sea level. The deity is normally covered in sandalwood paste (Chandana) all year and the actual vigraha form is revealed only on Akshaya Tritiya.",reach:"By Road: City buses and autos from Visakhapatnam city centre (16 km)\nBy Train: Visakhapatnam Railway Station (16 km)\nBy Air: Visakhapatnam Airport (18 km)",dresscode:"Men must wear dhoti (no shirt) in inner sanctum. Women in saree/salwar.",stay:"TTD Guest Houses, temple dharamshala, Visakhapatnam city hotels"},
       {sl:29,name:"LNS Temple – Mangalagiri, Guntur",deity:"Sri Panakala Narasimha Swamy",loc:"Mangalagiri",near:"Guntur",state:"Andhra Pradesh",country:"India",contact:"9848419118",months:"All year"},
       {sl:30,name:"LNS Temple – Bhadrachalam, Telangana",deity:"Sri Lakshmi Narasimha Swamy",loc:"Bhadrachalam",near:"Bhadradri Kothagudem",state:"Telangana",country:"India",contact:"8885368348",months:"All year"},
       {sl:31,name:"LNS Temple – Vadepalley, Miryalaguda",deity:"Sri Lakshmi Narasimha Swamy",loc:"Vadepalley",near:"Miryalaguda",state:"Telangana",country:"India",contact:"-",months:"All year"},
@@ -1052,7 +1067,7 @@ ranganathaswamy:{
       {sl:11,name:"Ranganathar Temple, Vadarangam, Sirkazhi",deity:"Sri Ranganathar",loc:"Vadarangam, Sirkazhi",near:"Sirkazhi",state:"Tamil Nadu",country:"India",contact:"9087475282",months:"All year"},
       {sl:12,name:"Ranganathar Temple, Sothamangalam, Thiruvarur",deity:"Sri Ranganathar",loc:"Sothamangalam, Thiruvarur",near:"Kumbakonam",state:"Tamil Nadu",country:"India",contact:"9443381128",months:"All year"},
       {sl:13,name:"Ranganathar Temple, Thirumandangudi, Kumbakonam",deity:"Sri Ranganathar",loc:"Thirumandangudi, Kumbakonam",near:"Kumbakonam",state:"Tamil Nadu",country:"India",contact:"9095638765",months:"All year"},
-      {sl:14,name:"Ranganathar Temple, Srirangam",deity:"Sri Ranganathaswamy (Main)",loc:"Srirangam, Tiruchirappalli",near:"Tiruchirappalli",state:"Tamil Nadu",country:"India",contact:"9486482246",months:"Oct–Mar"},
+      {sl:14,name:"Ranganathar Temple, Srirangam",deity:"Sri Ranganathaswamy (Main)",loc:"Srirangam Island, Tiruchirappalli",near:"Tiruchirappalli",state:"Tamil Nadu",country:"India",contact:"9486482246",months:"Oct–Mar, Vaikunta Ekadashi (Dec–Jan)",address:"Srirangam – 620006, Tiruchirappalli, Tamil Nadu, India",timings:"6:00 AM – 1:00 PM and 3:15 PM – 9:00 PM | Inner sanctum special: 6:45–7:45 AM, 10:30–11 AM, 6–6:30 PM",about:"The largest functioning Hindu temple complex in the world, spread over 156 acres with 21 gopurams (towers). Sri Ranganathaswamy (Reclining Vishnu) is the first among the 108 Divya Desams. The Rajagopuram (main tower) is 73 metres tall and the most prominent feature.",reach:"By Road: Buses from Chennai (330 km), Madurai (160 km), Coimbatore (230 km)\nBy Train: Tiruchirappalli Junction (3 km) – well connected to all major cities\nBy Air: Tiruchirappalli International Airport (8 km)",dresscode:"Men must remove shirt for inner sanctum darshan. Ladies in saree/salwar. No jeans.",stay:"TTD Rest House, temple dharamshala, multiple hotels in Trichy city"},
       {sl:15,name:"Rangaswamy Temple, Thiruvarangam, Kallikurchi",deity:"Sri Ranganathaswamy",loc:"Thiruvarangam, Kallikurchi",near:"Villupuram",state:"Tamil Nadu",country:"India",contact:"8144047339",months:"All year"},
     ]},
     {label:"B – 16 to 30",temples:[
@@ -1224,20 +1239,60 @@ function switchTab(idx){
 // ══════════════════════════════════════════════════════════
 // RENDER TEMPLES
 // ══════════════════════════════════════════════════════════
+function buildAddress(t){
+  // Build address from old fields or new address field
+  if(t.address) return t.address;
+  const parts=[t.loc,t.state,t.country].filter(v=>v&&v!=='-');
+  return parts.join(', ')||'-';
+}
+function buildReach(t){
+  if(t.reach) return t.reach;
+  // Auto-build from near + state fields for common pilgrims
+  if(t.near&&t.near!=='-'&&t.near!==t.loc){
+    const st=t.state&&t.state!=='-'?t.state:'';
+    return `By Road: Regular buses and taxis from ${t.near}${st?' ('+st+')':''}\nBy Train: Nearest railway station at ${t.near}\nBy Air: Nearest airport near ${t.near}`;
+  }
+  return '';
+}
+function renderReach(reach){
+  if(!reach||reach==='-') return '';
+  const lines=reach.split(/\n/);
+  return lines.map(line=>{
+    const roadM=line.match(/^By Road[:\s]+(.*)/i);
+    const trainM=line.match(/^By Train[:\s]+(.*)/i);
+    const airM=line.match(/^By Air[:\s]+(.*)/i);
+    const busM=line.match(/^By Bus[:\s]+(.*)/i);
+    if(roadM) return `<div class="reach-row"><span class="reach-icon">🚌</span><span class="reach-label">Road</span><span class="reach-text">${roadM[1]}</span></div>`;
+    if(trainM) return `<div class="reach-row"><span class="reach-icon">🚂</span><span class="reach-label">Train</span><span class="reach-text">${trainM[1]}</span></div>`;
+    if(airM) return `<div class="reach-row"><span class="reach-icon">✈️</span><span class="reach-label">Air</span><span class="reach-text">${airM[1]}</span></div>`;
+    if(busM) return `<div class="reach-row"><span class="reach-icon">🚌</span><span class="reach-label">Bus</span><span class="reach-text">${busM[1]}</span></div>`;
+    return `<div class="reach-row"><span class="reach-icon">📍</span><span class="reach-label"></span><span class="reach-text">${line}</span></div>`;
+  }).join('');
+}
+
 function renderTemples(catId,tabIdx,filter){
   const tab=DB[catId].tabs[tabIdx];
   const fl=filter.toLowerCase();
   const temples=tab.temples.filter((_,i)=>{
     const t=getTemple(catId,tabIdx,i);
     if(!fl)return true;
-    return [t.name,t.deity,t.loc,t.near,t.state,t.country].some(v=>v&&v.toLowerCase().includes(fl));
+    return [t.name,t.deity,t.loc,t.near,t.state,t.country,t.address].some(v=>v&&v.toLowerCase().includes(fl));
   });
   const list=document.getElementById('templeList');
   if(!temples.length){list.innerHTML='<div class="empty"><div class="empty-icon">🔍</div><p>No temples found</p></div>';return}
-  list.innerHTML=temples.map((orig,fi)=>{
+  list.innerHTML=temples.map((orig)=>{
     const ri=tab.temples.indexOf(orig);
     const t=getTemple(catId,tabIdx,ri);
     const visited=isVisited(catId,tabIdx,ri);
+    const addr=buildAddress(t);
+    const reachRaw=buildReach(t);
+    const reachHtml=renderReach(reachRaw);
+    const timings=t.timings||'';
+    const about=t.about||t.notes||'';
+    const dresscode=t.dresscode||'';
+    const stay=t.stay||'';
+    const mapsQ=encodeURIComponent((t.name||'')+' '+(t.loc||''));
+    const shareText=encodeURIComponent(`🛕 ${t.name}\n🙏 ${t.deity}\n📍 ${addr}\n${timings?'🕐 '+timings+'\n':''}${t.contact&&t.contact!=='-'?'📞 '+t.contact+'\n':''}${t.months?'📅 Best time: '+t.months:''}\n\nShared from India Temple Pilgrim Guide`);
     return `<div class="t-card" id="tc-${catId}-${tabIdx}-${ri}">
       <div class="t-card-header" onclick="toggleCard('tc-${catId}-${tabIdx}-${ri}')">
         <div class="t-num">${t.sl}</div>
@@ -1249,17 +1304,53 @@ function renderTemples(catId,tabIdx,filter){
       </div>
       <div class="t-details">
         <div class="t-detail-grid">
-          <div class="t-detail"><div class="t-detail-label">📍 Location</div><div class="t-detail-val">${t.loc||'-'}</div></div>
-          <div class="t-detail"><div class="t-detail-label">🗺 Close To</div><div class="t-detail-val">${t.near||'-'}</div></div>
-          <div class="t-detail"><div class="t-detail-label">🏛 State</div><div class="t-detail-val">${t.state||'-'}</div></div>
-          <div class="t-detail"><div class="t-detail-label">🌍 Country</div><div class="t-detail-val">${t.country||'-'}</div></div>
-          <div class="t-detail"><div class="t-detail-label">📞 Contact</div><div class="t-detail-val">${t.contact&&t.contact!=='-'?`<a href="tel:${t.contact}" style="color:var(--saffron)">${t.contact}</a>`:'-'}</div></div>
-          <div class="t-detail"><div class="t-detail-label">📅 Best Months</div><div class="t-detail-val">${t.months||'-'}</div></div>
-          ${t.notes?`<div class="t-detail full"><div class="t-detail-label">📝 Notes</div><div class="t-detail-val">${t.notes}</div></div>`:''}
+
+          <div class="t-detail full">
+            <div class="t-detail-label">📍 Address</div>
+            <div class="t-detail-val">${addr}</div>
+          </div>
+
+          ${timings?`<div class="t-detail timing-box full">
+            <div class="t-detail-label">🕐 Temple Timings</div>
+            <div class="t-detail-val">${timings}</div>
+          </div>`:''}
+
+          ${t.contact&&t.contact!=='-'?`<div class="t-detail">
+            <div class="t-detail-label">📞 Contact</div>
+            <div class="t-detail-val"><a href="tel:${t.contact}" style="color:var(--saffron);font-weight:600">${t.contact}</a></div>
+          </div>`:''}
+
+          ${t.months?`<div class="t-detail">
+            <div class="t-detail-label">📅 Best Time to Visit</div>
+            <div class="t-detail-val">${t.months}</div>
+          </div>`:''}
+
+          ${reachHtml?`<div class="t-detail reach full">
+            <div class="t-detail-label">🗺 How to Reach</div>
+            <div class="t-detail-val" style="margin-top:4px">${reachHtml}</div>
+          </div>`:''}
+
+          ${about?`<div class="t-detail info-box full">
+            <div class="t-detail-label">ℹ️ About Temple</div>
+            <div class="t-detail-val">${about}</div>
+          </div>`:''}
+
+          ${dresscode?`<div class="t-detail full">
+            <div class="t-detail-label">👗 Dress Code</div>
+            <div class="t-detail-val">${dresscode}</div>
+          </div>`:''}
+
+          ${stay?`<div class="t-detail full">
+            <div class="t-detail-label">🏨 Accommodation</div>
+            <div class="t-detail-val">${stay}</div>
+          </div>`:''}
+
         </div>
-        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px">
+        <div class="action-row">
           <button class="edit-btn" onclick="openEdit('${catId}',${tabIdx},${ri});event.stopPropagation()">✏️ Edit</button>
           <button class="visited-btn${visited?' visited':''}" onclick="toggleVisit('${catId}',${tabIdx},${ri},this);event.stopPropagation()">${visited?'✅ Visited':'☆ Mark Visited'}</button>
+          <button class="maps-btn" onclick="window.open('https://maps.google.com/?q=${mapsQ}','_blank');event.stopPropagation()">🗺 Maps</button>
+          <button class="share-btn" onclick="window.open('https://wa.me/?text=${shareText}','_blank');event.stopPropagation()">📤 Share</button>
         </div>
       </div>
     </div>`;
@@ -1282,12 +1373,14 @@ function openEdit(catId,tabIdx,slIdx){
   editingKey={catId,tabIdx,slIdx};
   document.getElementById('e_name').value=t.name||'';
   document.getElementById('e_deity').value=t.deity||'';
-  document.getElementById('e_location').value=t.loc||'';
-  document.getElementById('e_closeto').value=t.near||'';
-  document.getElementById('e_state').value=t.state||'';
-  document.getElementById('e_country').value=t.country||'';
+  document.getElementById('e_address').value=t.address||buildAddress(t);
+  document.getElementById('e_reach').value=t.reach||buildReach(t);
+  document.getElementById('e_timings').value=t.timings||'';
   document.getElementById('e_contact').value=t.contact||'';
   document.getElementById('e_months').value=t.months||'';
+  document.getElementById('e_about').value=t.about||t.notes||'';
+  document.getElementById('e_dresscode').value=t.dresscode||'';
+  document.getElementById('e_stay').value=t.stay||'';
   document.getElementById('e_notes').value=t.notes||'';
   document.getElementById('editModal').classList.add('open');
 }
@@ -1301,12 +1394,14 @@ function saveEdit(){
   setTemple(catId,tabIdx,slIdx,{
     name:document.getElementById('e_name').value,
     deity:document.getElementById('e_deity').value,
-    loc:document.getElementById('e_location').value,
-    near:document.getElementById('e_closeto').value,
-    state:document.getElementById('e_state').value,
-    country:document.getElementById('e_country').value,
+    address:document.getElementById('e_address').value,
+    reach:document.getElementById('e_reach').value,
+    timings:document.getElementById('e_timings').value,
     contact:document.getElementById('e_contact').value,
     months:document.getElementById('e_months').value,
+    about:document.getElementById('e_about').value,
+    dresscode:document.getElementById('e_dresscode').value,
+    stay:document.getElementById('e_stay').value,
     notes:document.getElementById('e_notes').value,
   });
   closeModal();
