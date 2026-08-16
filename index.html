@@ -5,262 +5,38 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 <title>🕉 India Temple Pilgrim Guide</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<style>
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-:root{
---saffron:#E8610A;--saffron2:#FF8C2A;--saffron3:#c44a00;
---gold:#D4A017;--gold2:#F5CE5A;--gold3:#fff3c4;
---maroon:#5c1010;--maroon2:#3a0808;
---cream:#fdf6ec;--cream2:#fff9f0;
---text:#2a1000;--text2:#5a3010;--text3:#8a6040;
---card:#fffaf4;--border:#e8d5b0;
---shadow:0 4px 24px rgba(100,40,0,0.10);
---r:14px;
-}
-html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--cream);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
 
-/* ── HEADER ── */
-.hero{
-  background:linear-gradient(160deg,var(--maroon2) 0%,var(--maroon) 40%,#7a2010 100%);
-  padding:0;position:relative;overflow:hidden;
-}
-.hero-pattern{
-  position:absolute;inset:0;opacity:.07;
-  background-image:repeating-linear-gradient(45deg,var(--gold) 0,var(--gold) 1px,transparent 0,transparent 50%);
-  background-size:18px 18px;
-}
-.hero-inner{padding:28px 20px 22px;position:relative;z-index:1;text-align:center}
-.hero-om{font-size:clamp(2.4rem,8vw,4rem);line-height:1;filter:drop-shadow(0 0 20px rgba(212,160,23,.5))}
-.hero-title{
-  font-family:'Cinzel',serif;font-weight:900;
-  font-size:clamp(1.3rem,5vw,2.6rem);
-  background:linear-gradient(135deg,var(--gold2),#fff,var(--gold));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  line-height:1.15;margin:.4rem 0 .3rem;letter-spacing:.02em;
-}
-.hero-sub{color:rgba(255,243,196,.75);font-family:'Crimson Pro',serif;font-style:italic;font-size:clamp(.85rem,3vw,1.1rem);margin-bottom:1rem}
-.hero-stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.stat-pill{
-  background:rgba(255,255,255,.1);backdrop-filter:blur(8px);
-  border:1px solid rgba(255,243,196,.25);border-radius:40px;
-  padding:5px 14px;font-size:.78rem;color:var(--gold2);font-weight:600;letter-spacing:.04em;
-}
-
-/* ── SEARCH BAR ── */
-.search-wrap{padding:14px 16px 8px;background:var(--cream);position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.06)}
-.search-box{
-  display:flex;align-items:center;gap:8px;
-  background:white;border:1.5px solid var(--border);border-radius:40px;
-  padding:9px 16px;box-shadow:0 2px 8px rgba(0,0,0,.05);
-}
-.search-box input{
-  flex:1;border:none;outline:none;font-family:'DM Sans',sans-serif;
-  font-size:.95rem;color:var(--text);background:transparent;
-}
-.search-box input::placeholder{color:#b09070}
-.search-icon{color:var(--saffron);font-size:1.1rem;flex-shrink:0}
-
-/* ── CATEGORY NAV ── */
-.cat-nav{display:flex;gap:8px;overflow-x:auto;padding:12px 16px 4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.cat-nav::-webkit-scrollbar{display:none}
-.cat-btn{
-  flex-shrink:0;padding:7px 16px;border-radius:40px;
-  border:1.5px solid var(--border);background:white;
-  font-size:.8rem;font-weight:600;color:var(--text2);
-  cursor:pointer;transition:.2s;white-space:nowrap;font-family:'DM Sans',sans-serif;
-}
-.cat-btn.active,.cat-btn:hover{background:var(--saffron);border-color:var(--saffron);color:white}
-
-/* ── CATEGORY CARDS (HOME) ── */
-.home-grid{padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:12px}
-.cat-card{
-  background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);
-  padding:16px 12px;cursor:pointer;transition:.18s;text-align:center;
-  box-shadow:var(--shadow);
-}
-.cat-card:hover,.cat-card:active{transform:translateY(-2px);box-shadow:0 8px 28px rgba(100,40,0,.14);border-color:var(--saffron)}
-.cat-card .icon{font-size:2.2rem;margin-bottom:8px;display:block}
-.cat-card .cname{font-family:'Cinzel',serif;font-size:.78rem;font-weight:700;color:var(--maroon);line-height:1.3;margin-bottom:4px}
-.cat-card .ccount{
-  display:inline-block;background:var(--saffron);color:white;
-  border-radius:20px;padding:2px 9px;font-size:.7rem;font-weight:700;
-}
-
-/* ── SECTION VIEW ── */
-.section-view{display:none}
-.section-view.active{display:block}
-
-/* ── BACK HEADER ── */
-.back-header{
-  background:linear-gradient(135deg,var(--maroon2),var(--maroon));
-  padding:14px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:99;
-}
-.back-btn{
-  background:rgba(255,255,255,.15);border:none;border-radius:50%;
-  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
-  color:white;font-size:1.1rem;cursor:pointer;flex-shrink:0;
-}
-.back-title{font-family:'Cinzel',serif;color:var(--gold2);font-weight:700;font-size:1rem;line-height:1.2}
-.back-sub{color:rgba(255,243,196,.6);font-size:.72rem;margin-top:1px}
-
-/* ── SUB-TABS ── */
-.sub-tabs{display:flex;gap:8px;overflow-x:auto;padding:10px 14px;background:var(--cream2);border-bottom:1px solid var(--border);scrollbar-width:none}
-.sub-tabs::-webkit-scrollbar{display:none}
-.sub-tab{
-  flex-shrink:0;padding:6px 14px;border-radius:30px;
-  border:1.5px solid var(--border);background:white;
-  font-size:.76rem;font-weight:600;color:var(--text2);cursor:pointer;transition:.18s;
-}
-.sub-tab.active{background:var(--saffron);border-color:var(--saffron);color:white}
-
-/* ── TEMPLE CARDS ── */
-.temple-list{padding:12px 14px;display:flex;flex-direction:column;gap:10px}
-.t-card{
-  background:white;border:1.5px solid var(--border);border-radius:var(--r);
-  overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:.18s;
-}
-.t-card:hover{border-color:var(--saffron);box-shadow:0 6px 20px rgba(232,97,10,.15)}
-.t-card-header{
-  display:flex;align-items:center;gap:10px;padding:12px 14px 10px;
-}
-.t-num{
-  min-width:32px;height:32px;border-radius:50%;
-  background:linear-gradient(135deg,var(--saffron),var(--saffron2));
-  color:white;font-weight:700;font-size:.75rem;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cinzel',serif;
-}
-.t-main{flex:1;min-width:0}
-.t-name{font-family:'Cinzel',serif;font-weight:700;font-size:.88rem;color:var(--maroon);line-height:1.3;word-break:break-word}
-.t-deity{color:var(--saffron);font-size:.76rem;font-weight:600;margin-top:2px}
-.t-expand{color:var(--text3);font-size:.9rem;transition:.2s;flex-shrink:0}
-.t-card.open .t-expand{transform:rotate(180deg)}
-.t-details{
-  display:none;padding:0 14px 12px;
-  border-top:1px dashed var(--border);margin-top:4px;
-}
-.t-card.open .t-details{display:block}
-.t-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px 10px;margin-top:10px}
-.t-detail{background:var(--cream);border-radius:10px;padding:8px 11px;border:1px solid rgba(232,160,23,.15)}
-.t-detail-label{font-size:.62rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px;display:flex;align-items:center;gap:4px}
-.t-detail-val{font-size:.8rem;color:var(--text);font-weight:500;line-height:1.4}
-.t-detail.full{grid-column:1/-1}
-.t-detail.reach{grid-column:1/-1;background:linear-gradient(135deg,#fff8e7,#fff3cd);border:1px solid var(--gold)}
-.t-detail.info-box{grid-column:1/-1;background:linear-gradient(135deg,#e8f4fd,#dbeeff);border:1px solid #b3d4f5}
-.t-detail.timing-box{background:linear-gradient(135deg,#f0fff0,#e0f7e0);border:1px solid #a8dba8}
-.t-tag{
-  display:inline-block;background:var(--gold3);color:var(--maroon);
-  border-radius:20px;padding:2px 8px;font-size:.68rem;font-weight:700;margin:2px 2px 0 0;border:1px solid var(--gold);
-}
-.reach-row{display:flex;gap:5px;align-items:flex-start;margin-bottom:5px;font-size:.78rem;line-height:1.4}
-.reach-icon{font-size:.85rem;flex-shrink:0;margin-top:1px}
-.reach-label{font-weight:700;color:var(--saffron);min-width:55px}
-.reach-text{color:var(--text);flex:1}
-.action-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px;padding-top:10px;border-top:1px dashed var(--border)}
-.share-btn{display:flex;align-items:center;gap:5px;background:#25D366;color:white;border:none;border-radius:8px;padding:7px 12px;font-size:.76rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
-.maps-btn{display:flex;align-items:center;gap:5px;background:#4285F4;color:white;border:none;border-radius:8px;padding:7px 12px;font-size:.76rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
-.edit-btn{
-  display:flex;align-items:center;gap:5px;margin-top:10px;
-  background:var(--saffron);color:white;border:none;border-radius:8px;
-  padding:7px 14px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;
-}
-
-/* ── EDIT MODAL ── */
-.modal-overlay{
-  display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);
-  z-index:999;align-items:flex-end;justify-content:center;
-}
-.modal-overlay.open{display:flex}
-.modal{
-  background:white;border-radius:20px 20px 0 0;width:100%;max-width:560px;
-  max-height:90vh;overflow-y:auto;padding:0 0 20px;
-  animation:slideUp .3s ease;
-}
-@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
-.modal-handle{width:40px;height:4px;background:#ddd;border-radius:4px;margin:12px auto 0}
-.modal-title{font-family:'Cinzel',serif;font-weight:700;font-size:1rem;color:var(--maroon);padding:14px 18px 10px;border-bottom:1px solid var(--border)}
-.modal-body{padding:14px 18px}
-.form-row{margin-bottom:12px}
-.form-label{font-size:.75rem;font-weight:700;color:var(--text2);margin-bottom:4px;display:block;letter-spacing:.04em}
-.form-input{
-  width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:10px;
-  font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--text);
-  background:var(--cream);outline:none;
-}
-.form-input:focus{border-color:var(--saffron);background:white}
-textarea.form-input{resize:vertical;min-height:60px}
-.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.modal-actions{display:flex;gap:10px;padding:10px 18px 0}
-.btn-save{
-  flex:1;background:var(--saffron);color:white;border:none;border-radius:10px;
-  padding:11px;font-size:.9rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;
-}
-.btn-cancel{
-  background:var(--cream);color:var(--text2);border:1.5px solid var(--border);border-radius:10px;
-  padding:11px 18px;font-size:.9rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;
-}
-
-/* ── PROGRESS BAR (visited) ── */
-.progress-wrap{padding:10px 14px 2px;display:flex;align-items:center;gap:10px}
-.progress-bar{flex:1;height:6px;background:#f0e0c8;border-radius:3px;overflow:hidden}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--saffron),var(--gold));border-radius:3px;transition:.5s}
-.progress-label{font-size:.72rem;font-weight:700;color:var(--saffron);white-space:nowrap}
-.visited-btn{
-  background:none;border:1.5px solid;border-radius:20px;padding:3px 10px;
-  font-size:.7rem;font-weight:700;cursor:pointer;margin-left:auto;transition:.18s;
-}
-.visited-btn.visited{background:var(--gold3);border-color:var(--gold);color:var(--maroon)}
-.visited-btn:not(.visited){border-color:var(--border);color:var(--text3)}
-
-/* ── FOOTER / EMPTY ── */
-.empty{text-align:center;padding:48px 20px;color:var(--text3)}
-.empty-icon{font-size:3rem;margin-bottom:8px}
-.page-footer{padding:30px 20px;text-align:center;color:var(--text3);font-size:.78rem;border-top:1px solid var(--border);margin-top:20px}
-.page-footer strong{color:var(--saffron)}
-
-/* ── HOME VIEW ── */
-#homeView{display:block}
-
-/* ── Responsive ── */
-@media(min-width:600px){
-  .home-grid{grid-template-columns:repeat(auto-fill,minmax(175px,1fr))}
-  .modal{border-radius:20px;margin-bottom:20px}
-  .modal-overlay{align-items:center}
-}
-@media(min-width:900px){
-  .home-grid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));padding:20px 24px}
-  .temple-list{padding:16px 20px}
-  .back-header{padding:16px 24px}
-}
-
-/* ── DIVIDER ── */
-.region-divider{
-  display:flex;align-items:center;gap:10px;padding:16px 14px 6px;
-}
-.region-divider span{font-family:'Cinzel',serif;font-size:.72rem;font-weight:700;color:var(--saffron);text-transform:uppercase;letter-spacing:.12em;white-space:nowrap}
-.region-divider::before,.region-divider::after{content:'';flex:1;height:1px;background:var(--border)}
-
-/* Animations */
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.t-card{animation:fadeIn .25s ease both}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="temple-guide.css">
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 </head>
 <body>
 
 <!-- HOME VIEW -->
 <div id="homeView">
-  <div class="hero">
+  <div class="hero hero-premium">
+    <div class="hero-image"></div>
+    <div class="hero-vignette"></div>
     <div class="hero-pattern"></div>
+    <div id="reactAmbient" aria-hidden="true"></div>
     <div class="hero-inner">
-      <div class="hero-om">🕉</div>
-      <div class="hero-title">India Temple<br/>Pilgrim Guide</div>
-      <div class="hero-sub">Complete Sacred Temples Database</div>
+      <div class="hero-kicker"><span></span> INDIA'S SACRED HERITAGE <span></span></div>
+      <div class="hero-om">ॐ</div>
+      <div class="hero-title">India Temple<br/><em>Pilgrim Guide</em></div>
+      <div class="hero-sub">A premium digital companion for discovering India's sacred temples, traditions and pilgrimage routes.</div>
+      <div class="hero-actions">
+        <button class="hero-primary" onclick="document.getElementById('homeSearch').focus()">Explore Temples <span>↗</span></button>
+        <div class="hero-trust"><b>1200+</b><span>verified-style entries</span></div>
+      </div>
       <div class="hero-stats">
-        <span class="stat-pill">🛕 1200+ Temples</span>
-        <span class="stat-pill">📍 28 Categories</span>
-        <span class="stat-pill">🌍 India &amp; Overseas</span>
+        <span class="stat-pill"><b>1200+</b> Temples</span>
+        <span class="stat-pill"><b>28</b> Categories</span>
+        <span class="stat-pill"><b>India</b> &amp; Overseas</span>
       </div>
     </div>
+    <div class="hero-scroll"><span></span> Scroll to explore</div>
   </div>
   <div class="search-wrap">
     <div class="search-box">
@@ -358,6 +134,7 @@ textarea.form-input{resize:vertical;min-height:60px}
 </div>
 
 <script>
+
 // ══════════════════════════════════════════════════════════
 // DATA
 // ══════════════════════════════════════════════════════════
@@ -1980,7 +1757,9 @@ function buildReach(t){
   // Auto-build from near + state fields for common pilgrims
   if(t.near&&t.near!=='-'&&t.near!==t.loc){
     const st=t.state&&t.state!=='-'?t.state:'';
-    return `By Road: Regular buses and taxis from ${t.near}${st?' ('+st+')':''}\nBy Train: Nearest railway station at ${t.near}\nBy Air: Nearest airport near ${t.near}`;
+    return `By Road: Regular buses and taxis from ${t.near}${st?' ('+st+')':''}
+By Train: Nearest railway station at ${t.near}
+By Air: Nearest airport near ${t.near}`;
   }
   return '';
 }
@@ -2022,7 +1801,12 @@ function renderTemples(catId,tabIdx,filter){
     const dresscode=t.dresscode||'';
     const stay=t.stay||'';
     const mapsQ=encodeURIComponent((t.name||'')+' '+(t.loc||''));
-    const shareText=encodeURIComponent(`🛕 ${t.name}\n🙏 ${t.deity}\n📍 ${addr}\n${timings?'🕐 '+timings+'\n':''}${t.contact&&t.contact!=='-'?'📞 '+t.contact+'\n':''}${t.months?'📅 Best time: '+t.months:''}\n\nShared from India Temple Pilgrim Guide`);
+    const shareText=encodeURIComponent(`🛕 ${t.name}
+🙏 ${t.deity}
+📍 ${addr}
+${timings?'🕐 '+timings+'\n':''}${t.contact&&t.contact!=='-'?'📞 '+t.contact+'\n':''}${t.months?'📅 Best time: '+t.months:''}
+
+Shared from India Temple Pilgrim Guide`);
     return `<div class="t-card" id="tc-${catId}-${tabIdx}-${ri}">
       <div class="t-card-header" onclick="toggleCard('tc-${catId}-${tabIdx}-${ri}')">
         <div class="t-num">${t.sl}</div>
@@ -2178,6 +1962,45 @@ function globalSearch(q){
 // INIT
 // ══════════════════════════════════════════════════════════
 renderHome();
+
+</script>
+<script>
+(() => {
+  const mount = document.getElementById('reactAmbient');
+  if (!mount || !window.React || !window.ReactDOM) return;
+  const {createElement: h, useEffect, useState} = React;
+  function Ambient(){
+    const [mouse,setMouse]=useState({x:0,y:0});
+    useEffect(()=>{
+      let raf=0;
+      const onMove=e=>{
+        cancelAnimationFrame(raf);
+        raf=requestAnimationFrame(()=>setMouse({x:(e.clientX/innerWidth-.5)*2,y:(e.clientY/innerHeight-.5)*2}));
+      };
+      addEventListener('pointermove',onMove,{passive:true});
+      return()=>{cancelAnimationFrame(raf);removeEventListener('pointermove',onMove)};
+    },[]);
+    const particles=Array.from({length:18},(_,i)=>h('i',{key:i,className:'ambient-particle',style:{'--i':i,'--px':`${(i*37)%100}%`,'--delay':`${(i%7)*.8}s`}}));
+    return h('div',{className:'ambient-layer',style:{transform:`translate3d(${mouse.x*10}px,${mouse.y*6}px,0)`}},
+      h('div',{className:'ambient-orb orb-a'}),h('div',{className:'ambient-orb orb-b'}),particles);
+  }
+  ReactDOM.createRoot(mount).render(h(Ambient));
+})();
+
+// Progressive reveal for cards/sections without changing the existing data/rendering logic.
+const revealObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');revealObserver.unobserve(e.target)}});
+},{threshold:.08});
+const observeCards=()=>document.querySelectorAll('.cat-card,.t-card').forEach(el=>{if(!el.dataset.reveal){el.dataset.reveal='1';revealObserver.observe(el)}});
+const originalRenderHome=window.renderHome;
+if(typeof originalRenderHome==='function'){
+  window.renderHome=function(){originalRenderHome();requestAnimationFrame(observeCards)};
+}
+const originalRenderTemples=window.renderTemples;
+if(typeof originalRenderTemples==='function'){
+  window.renderTemples=function(...args){originalRenderTemples(...args);requestAnimationFrame(observeCards)};
+}
+requestAnimationFrame(observeCards);
 </script>
 </body>
 </html>
