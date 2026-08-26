@@ -1,0 +1,20 @@
+Templeopedia – category image sources
+
+The requested category-specific images are loaded from Wikimedia Commons via Special:FilePath.
+Please retain this file when publishing the project.
+
+- Shakti Peethas: Kamakhya Temple, Guwahati.jpg (CC BY-SA 3.0) [corrected — was a non-existent filename]
+- Navagraha Temples: KONARK SUN TEMPLE.jpg (CC BY-SA 4.0) [corrected — was a non-existent filename]
+- Hero banner (large screens): Beauty of khajuraho temple.jpg (CC BY-SA 4.0)
+- Pancha Bhoota: Chidambaram Nataraja Temple.jpg
+- Lakshmi Narasimha Swamy: Sri Lakshminarasimha Swamy Temple Yadagirigutta Yadadri Telangana 01.jpg
+- Anjaneyar: Namakkal Anjaneyar.jpg (CC BY-SA 3.0)
+- Overseas: Mauritius HinduTempleArea-GangaTalao-01.jpg (CC BY-SA 3.0)
+- Kodandaramar: Kodandarama Temple, Vontimitta.jpg (CC BY-SA 4.0)
+- Narayana Kshetrams: Narayana Swamy Temple.jpg
+- Ashta Vinayak: Moraya1.jpg (CC BY-SA 4.0)
+- Brahma: Brahma Temple, Pushkar.jpg
+- Nava Dwaraka: Dwarkadheesh temple.jpg
+- Pancha Ranga: Ranganathaswamy-Temple-srirangam.jpg (CC BY-SA 4.0)
+
+Wikimedia Commons file pages provide the individual author/license details.
